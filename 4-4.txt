@@ -1,0 +1,8 @@
+rows   | columns
+----------------
+ 1     |    4      (follows from simple rule)
+ 3     |    5
+ 5     |    6
+ 6     |    7
+ 7     |    8
+ 8     |    9

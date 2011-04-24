@@ -1,0 +1,18 @@
+body, td { font-family: Verdana,Arial; font-size: 12px }
+
+a:link, a:focus, a:visited { font-weight: bold; color: #1111DD }
+a:hover { font-weight: bold; background-color: #2233FF; color: white }
+
+a.abbr:link, a.abbr:focus, a.abbr:visited { color: #9E040F }
+a.abbr:hover { background-color: #9E040F; color: white }
+
+a.btn:link, a.btn:focus, a.btn:visited { color: black; padding-left: 5px; padding-right: 5px; padding-top: 3px; padding-bottom: 3px; background-color: #CCCCCC; border-left: 1px solid #EEEEEE; border-top: 1px solid #EEEEEE; border-bottom: 1px solid #333333; border-right: 1px solid #333333; text-decoration: none }
+
+a.btn:hover { text-decoration: underline }
+
+a.btn:active { border-right: 1px solid #EEEEEE; border-bottom: 1px solid #EEEEEE; border-top: 1px solid #333333; border-left: 1px solid #333333 }
+
+hr { height: 1px; color: black }
+
+.score { font-weight: bold; font-size: 18px }
+.subscore { font-weight: bold; font-size: 16px }

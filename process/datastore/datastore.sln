@@ -1,0 +1,21 @@
+Microsoft Visual Studio Solution File, Format Version 8.00
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "datastore", "datastore.vcproj", "{88FED710-A8E8-4104-84B7-1630D2A52F03}"
+	ProjectSection(ProjectDependencies) = postProject
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfiguration) = preSolution
+		Debug = Debug
+		Release = Release
+	EndGlobalSection
+	GlobalSection(ProjectConfiguration) = postSolution
+		{88FED710-A8E8-4104-84B7-1630D2A52F03}.Debug.ActiveCfg = Debug|Win32
+		{88FED710-A8E8-4104-84B7-1630D2A52F03}.Debug.Build.0 = Debug|Win32
+		{88FED710-A8E8-4104-84B7-1630D2A52F03}.Release.ActiveCfg = Release|Win32
+		{88FED710-A8E8-4104-84B7-1630D2A52F03}.Release.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+	EndGlobalSection
+	GlobalSection(ExtensibilityAddIns) = postSolution
+	EndGlobalSection
+EndGlobal

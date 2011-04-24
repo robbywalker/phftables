@@ -1,0 +1,85 @@
+\documentclass[10pt]{article}
+
+\usepackage{fullpage}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+\newcommand{\bigo}{\mathrm{O}}
+\newcommand{\PHF}{\mbox{$\mathsf{PHF}$}}
+\newcommand{\PHFN}{\mbox{$\mathsf{PHFN}$}}
+
+\renewcommand{\tabcolsep}{4pt}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}{Lemma}[section]
+
+\def\endmark{\hskip 2em$\blacksquare$\par}
+\def\proof{\trivlist \item[\hskip \labelsep{\em Proof.\ }]}
+\def\endproof{\null\hfill\endmark\endtrivlist}
+
+\newcommand{\A}{\mbox{$\mathsf{A}$}}
+
+% document start
+\begin{document}
+
+% title info
+\title{Symbol Increase for Strength 3 Perfect Hash Families}
+
+\author{Robert A. Walker II\\
+Computer Science and Engineering\\
+Arizona State University\\
+P.O. Box 878809,\\
+Tempe, AZ 85287, U.S.A.\\
+{\tt robby.walker@gmail.com}
+}
+\date{}
+
+\maketitle
+
+%\begin{abstract}
+
+\section{Theorems}
+
+Will will consider a $\PHF(N;k,v,t)$ as an $N \times k$ array on $v$ symbols.
+Then, to be a $\PHF$ the array must have the property that given an $N \times t$
+sub-array, there is at least one row containing distinct symbols.
+
+\begin{lemma}
+If we are given a $\PHF(N;k,v,t)$, we may create a $\PHF(N;N,v+1,t)$ where every row contains
+exactly one $x$ and every column contains exactly one $x$, where $x$ is the new symbol.
+\end{lemma}
+
+\begin{proof}
+Construct the array using the first $N$ columns of the original array.  Replace the entry in the $i$-th row of the
+$i$-th column with $x$.  This satisfies the second condition.  We need now verify that the new array represents a
+perfect hash family.
+
+Consider any $N \times t$ sub-array of the new array.  Each row in this sub-array contains exactly one $x$.  Consider
+one of the rows (there is at least one) that contained distinct symbols in the original array.  Then, this row still
+contains distinct symbols, since one distinct symbol has been replaced with an $x$, which is also distinct.
+\end{proof}
+
+Using this proof, we can now show the theorem.
+
+\begin{theorem}
+Given a $\PHF(N;k,v,3)$ we can create a $\PHF(N;k+N,v+1,3)$.
+\end{theorem}
+\begin{proof}
+Construct a $\PHF(N;N,v+1,3)$ as in the Lemma.  Call this new array $\A'$.  Now, place that array adjacent to the original array (call it $\A$)
+to form an $N \times k+N$ array.
+
+Now we must consider any $N \by 3$ sub-array.  There are several cases to consider.
+
+\begin{itemize}
+\item 3 columns from $\A$: by definition, there will be at least one row of distinct symbols because $\A$ is a $\PHF$.
+
+\item 3 columns from $\A'$: by the lemma, $\A'$ is a $\PHF$.
+
+\item 2 columns from $\A$, one from $\A'$: DOES NOT WORK!
+
+\item 1 column from $\A$, two from $\A'$: Subcase, the column from $\A$ has a copy in $\A'$
+
+\end{proof}
+
+
+\end{document}

@@ -1,0 +1,65 @@
+#!/usr/bin/perl
+
+my $name = 'basic_4_roux';
+my $id;
+
+$id = get_construction_id( $name, 1, 2 );
+
+$constructions{ $name } = {};
+
+$constructions{ $name }->{'process_array'} =
+	sub {
+		my $array = shift;
+
+		if ( $array->{'k'} >= $MAXK ) {
+			return;
+		}
+
+		if ( $array->{'t'} == 4 && $array->{'v'} > 4 ) {
+			$subarray = get_best_array( $array->{'k'}, $array->{'v'} - 1, 3 );
+
+			$new_array = new_constructed_array( $array->{'N'} + 4 * $subarray->{'N'},
+		    	                                3 * $array->{'k'},
+												$array->{'v'},
+												4 );
+
+			$new_array->{'construction'} = $id;
+			$new_array->{'ingredients'} = [ $array, $subarray ];
+
+			persist_constructed_array( $new_array );
+		}
+		elsif ( $array->{'t'} == 3 && $array->{'v'} > 3 ) {
+			# process as sub array
+			my $prev = get_max_k_array( 'k < ' . $array->{'k'} . ' AND t = ' . $array->{'t'} . ' AND v = ' . $array->{'v'} );
+
+			my $condition = 'k <= ' . $array->{'k'} . ' AND t = 4 AND v = ' . ($array->{'v'}+1);
+			if ( $prev ) {
+				$condition .= ' AND k > ' . $prev->{'k'};
+			}
+			my $arrays = get_arrays( $condition );
+			my $superarray;
+			foreach $superarray (@$arrays) {
+				my $new_array = new_constructed_array( 4 * $array->{'N'} + $superarray->{'N'},
+			                                       	   $superarray->{'k'} * 3,
+				   								       $superarray->{'v'},
+												       4 );
+				$new_array->{'construction'} = $id;
+				$new_array->{'ingredients'} = [ $superarray, $array ];
+
+				persist_constructed_array( $new_array );
+			}
+		}
+	};
+
+
+
+
+
+
+
+
+
+
+
+
+1;
